@@ -6,7 +6,11 @@ const yaml = require('js-yaml');
  
 async function main(oas) {
   // generate schema:
-  const { schema, report } = await createGraphQLSchema(oas)
+  const { schema, report } = await createGraphQLSchema(oas, {
+    headers: {
+      'User-Agent': 'AdoptOpenJDK GraphQL Server'
+    }
+  })
  
   // server schema:
   const app = express()
