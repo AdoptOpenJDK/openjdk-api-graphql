@@ -3,6 +3,7 @@ const graphqlHTTP = require('express-graphql')
 const { createGraphQLSchema } = require('openapi-to-graphql');
 const request = require('request')
 const yaml = require('js-yaml');
+const port = process.env.PORT || 8080;
  
 async function main(oas) {
   // generate schema:
@@ -21,7 +22,7 @@ async function main(oas) {
       graphiql: true
     })
   )
-  app.listen(8080)
+  app.listen(port)
 }
 
 request('https://api.adoptopenjdk.net/openapi', function (error, response, body) {
