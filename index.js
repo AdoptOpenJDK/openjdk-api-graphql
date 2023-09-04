@@ -1,5 +1,5 @@
 const express = require('express')
-const graphqlHTTP = require('express-graphql')
+const { graphqlHTTP } = require('express-graphql')
 const { createGraphQLSchema } = require('openapi-to-graphql');
 const request = require('request')
 const yaml = require('js-yaml');
