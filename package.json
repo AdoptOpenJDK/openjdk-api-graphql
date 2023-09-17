@@ -16,5 +16,10 @@
     "js-yaml": "^4.1.0",
     "openapi-to-graphql": "^3.0.5",
     "request": "^2.88.2"
+  },
+  "overrides": {
+    "express-graphql": {
+      "graphql": ">=16.8.0"
+    }
   }
 }
