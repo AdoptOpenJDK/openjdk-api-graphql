@@ -26,8 +26,7 @@ async function main(oas) {
 }
 
 request('https://api.adoptopenjdk.net/openapi', function (error, response, body) {
-  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  // workaround for https://github.com/IBM/openapi-to-graphql/issues/350
-  body = body.replace(/default: "(.*?)"/g, "default: $1")
+   // Print the response status code if a response was received
+  console.log('statusCode:', response && response.statusCode);
   main(yaml.load(body))
 }); 
