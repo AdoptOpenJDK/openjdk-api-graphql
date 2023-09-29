@@ -1,6 +1,6 @@
-const express = require('express')
-const { graphqlHTTP } = require('express-graphql')
 const { createGraphQLSchema } = require('openapi-to-graphql');
+const { createServer } = require('node:http')
+const { createYoga } = require('graphql-yoga')
 const request = require('request')
 const yaml = require('js-yaml');
 const port = process.env.PORT || 8080;
@@ -12,17 +12,18 @@ async function main(oas) {
       'User-Agent': 'AdoptOpenJDK GraphQL Server'
     }
   })
+
+  // Create a Yoga instance with a GraphQL schema.
+  const yoga = createYoga({ schema })
+  
+  // Pass it into a server to hook into request handlers.
+  const server = createServer(yoga)
  
-  // server schema:
-  const app = express()
-  app.use(
-    '/graphql',
-    graphqlHTTP({
-      schema,
-      graphiql: true
-    })
-  )
-  app.listen(port)
+ 
+  // Start the server and you're done!
+  server.listen(port, () => {
+    console.info(`Server is running on http://localhost:${port}/graphql`)
+  })
 }
 
 request('https://api.adoptopenjdk.net/openapi', function (error, response, body) {
