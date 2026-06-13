@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "graphql": "^16.14.2",
-    "graphql-yoga": "^5.21.1",
+    "graphql-yoga": "^5.21.2",
     "js-yaml": "^4.2.0",
     "openapi-to-graphql": "^3.0.7",
     "request": "^2.88.2"
